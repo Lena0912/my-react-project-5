@@ -1,16 +1,17 @@
 import { useState } from "react";
-import { MovieList } from "../components/MovieList";
+import { MovieList } from "../components/MovieList/MovieList";
 import { searchMovies } from "../tmdbApi";
-
+import { Link } from "react-router-dom";
 
 export const MoviesPage = () => {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
 
   const handleSearch = () => {
     searchMovies(query)
       .then(setMovies)
-      .catch((error) => console.error('Error searching movies:', error));
+      .catch((error) => console.error("Error searching movies:", error))
+      .reset("");
   };
   return (
     <>
@@ -22,8 +23,8 @@ export const MoviesPage = () => {
         placeholder="Enter movie title"
       />
       <button onClick={handleSearch}>Search</button>
-      <MovieList movies={movies}/>
+      <MovieList movies={movies} />
+      <Link to="/">Go Back Home</Link>
     </>
   );
-  
 };
