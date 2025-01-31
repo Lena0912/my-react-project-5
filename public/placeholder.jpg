@@ -1,0 +1,5 @@
+
+<MoviePoster
+  src={movie.poster_path ? `${IMAGE_BASE_URL}${movie.poster_path}` : placeholder}
+  alt={`${movie.title} poster`}
+/>

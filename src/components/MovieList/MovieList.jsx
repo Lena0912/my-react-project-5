@@ -1,19 +1,30 @@
-import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { IMAGE_BASE_URL } from "../../tmdbApi";
-import { MovieItem, Movies } from "./MovieList.style";
+import { MovieItem, MovieLink, MoviePoster, Movies } from "./MovieList.style";
 
-export const MovieList = ({ movies }) => (
-  <Movies>
-    {movies.map((movie) => (
-      <MovieItem key={movie.id}>
-        <Link to={`/movies/${movie.id}`}>
-          <img
-            src={`${IMAGE_BASE_URL}${movie.poster_path}`}
-            alt={`${movie.title} poster`}
-            style={{ width: "100px", borderRadius: "8px" }}
-          />
-        </Link>
-      </MovieItem>
-    ))}
-  </Movies>
-);
+export const MovieList = ({ movies}) => {
+  const location = useLocation();
+
+  return (
+    <Movies>
+      
+      {movies.map((movie) => (
+        <MovieItem key={movie.id}>
+          <MovieLink to={`/movies/${movie.id}`} state={{ from: location }}>
+            <MoviePoster
+              src={
+                movie.poster_path
+                  ? `${IMAGE_BASE_URL}${movie.poster_path}`
+                  : "/placeholder.jpg"
+              }
+              alt={`${movie.title} poster`}
+            />
+            <h2>{movie.title}</h2>
+          </MovieLink>
+        </MovieItem>
+      ))}
+      
+        
+    </Movies>
+  );
+};

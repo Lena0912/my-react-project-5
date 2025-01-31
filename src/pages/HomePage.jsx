@@ -15,10 +15,11 @@ export const HomePage = () => {
 
   return (
     <>
+      <button>Home</button>
       <Link to="/movies">
         <button>Movies</button>
       </Link>
-      <h1>Popular Movies</h1>
+      <h1>Trending today</h1>
       <MovieList movies={movies} />
     </>
   );

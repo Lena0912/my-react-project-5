@@ -6,9 +6,9 @@ import { ThemeProvider } from 'styled-components'
 
 const theme = {
   colors: {
-    accent: "#738e9e",
+    accent: "#2a3942",
     buttonAccent: "rgb(110, 187, 191)",
-    grey: "#9e9c9c",
+    grey: "#f8f3f3",
     error: "#dc143c",
     bgInput: "#f9f0da",
     white: "#fff",
@@ -24,7 +24,7 @@ const theme = {
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <ThemeProvider theme={theme}>
-      <BrowserRouter>
+      <BrowserRouter basename="/my-react-project-5">
         <App />
       </BrowserRouter>
     </ThemeProvider>
